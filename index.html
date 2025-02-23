@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bangla WikiConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2F3C7E;
+            --secondary: #FBEAEB;
+            --accent: #FF6B6B;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg,
+                    #FF6B6B,
+                    #2F3C7E,
+                    #1A2A6C);
+            background-size: 400% 400%;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 20px;
+            animation: gradientFlow 12s ease infinite;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            background: linear-gradient(45deg, #fff, #FBEAEB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: textFloat 3s ease-in-out infinite;
+        }
+
+        /* Add decorative elements */
+        .header-deco {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header-deco:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: -50px;
+            left: -50px;
+            animation: decoMove 20s linear infinite;
+        }
+
+        .header-deco:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            bottom: -30px;
+            right: -30px;
+            animation: decoMove 15s linear infinite reverse;
+        }
+
+        /* Animations */
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        @keyframes textFloat {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-5px)
+            }
+        }
+
+        @keyframes decoMove {
+            0% {
+                transform: rotate(0deg)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-deco {
+                display: none;
+            }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin: 0 0 15px;
+        }
+
+        .project-card p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--accent);
+        }
+
+        .team-card h3 {
+            margin: 10px 0;
+            color: var(--primary);
+        }
+
+        .team-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        nav {
+            background: var(--primary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Social Icons in Header */
+        .header-social {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-social a {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: var(--secondary);
+            padding: 40px 0;
+        }
+
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .partners-grid img {
+            height: 60px;
+            width: auto;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .partners-grid img:hover {
+            opacity: 1;
+        }
+
+        /* Footer Social Icons */
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .header-social {
+                position: static;
+                justify-content: center;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#team">Team</a>
+                <a href="#partners">Partners</a>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div class="header-deco"></div>
+        <div class="header-deco"></div>
+        <h1 class="vibrant-title">Welcome to Bangla WikiConnect</h1>
+    </header>
+
+    <div class="container">
+        <!-- Existing sections remain same -->
+        <div class="section" id="about">
+            <h2>About Bangla WikiConnect</h2>
+            <p>Bangla WikiConnect is a collaborative initiative focused on enhancing and expanding Wikipedia’s content
+                in Bengali. Through a variety of engaging contests, edit-a-thons, and training programs, we aim to
+                develop high-quality, inclusive content on Wikipedia and its sister projects such as Wikiquote,
+                Wikivoyage, Wikibooks, and Wiktionary.</p>
+            <p>Our mission is to foster a more informed, educated, and active community that contributes to the digital
+                knowledge repository. By providing a platform for new contributors, training aspiring leaders, and
+                promoting content diversity, we ensure the continued growth of the Bangla language on Wikimedia
+                projects.</p>
+        </div>
+        <!-- Projects Section -->
+        <div class="section" id="projects">
+            <h2>Our Projects</h2>
+            <p>Each year, we organize multiple events, including writing contests, photo walks, and collaborative
+                training sessions. These projects focus on key areas such as:</p>
+            <ul>
+                <div class="projects-grid">
+                    <!-- Project Cards -->
+                    <div class="project-card">
+                        <h3>Wiki Loves Children</h3>
+                        <p>Documenting children's rights and welfare through collaborative content creation.</p>
+                        <button class="btn learn-more">Learn More</button>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-wikipedia-w"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Wikiquote Entry COntest</h3>
+                        <p>Documenting children's rights and welfare through collaborative content creation.</p>
+                        <button class="btn learn-more">Learn More</button>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-wikipedia-w"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Wiki Loves Children</h3>
+                        <p>Documenting children's rights and welfare through collaborative content creation.</p>
+                        <button class="btn learn-more">Learn More</button>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-wikipedia-w"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Wiki Loves Children</h3>
+                        <p>Documenting children's rights and welfare through collaborative content creation.</p>
+                        <button class="btn learn-more">Learn More</button>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-wikipedia-w"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Wiki Loves Children</h3>
+                        <p>Documenting children's rights and welfare through collaborative content creation.</p>
+                        <button class="btn learn-more">Learn More</button>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-wikipedia-w"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Wiki Loves Children</h3>
+                        <p>Documenting children's rights and welfare through collaborative content creation.</p>
+                        <button class="btn learn-more">Learn More</button>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-wikipedia-w"></i></a>
+                        </div>
+                    </div>
+                    <!-- Add more project cards -->
+                </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="section" id="team">
+            <h2>Our Team</h2>
+            <p>Click here to see full list of our team.</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Yahya_at_Bangla_WikiConference_2024.jpg/553px-Yahya_at_Bangla_WikiConference_2024.jpg" alt="Muhammad Yahya">
+                    <h3>Muhammad Yahya</h3>
+                    <p>Lead Strategist</p>
+                    <p>Yahya is a Wikimedia steward and a dedicated Wikimedian. He has organized numerous edit-a-thons and events, including Wikimania (as a scholarship review committee member), the Bangla WikiConference, and many others!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="mailto:yahya@bnwp.org"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                    <div class="team-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Elliot_John_Gleave_during_radio_interview.jpg/320px-Elliot_John_Gleave_during_radio_interview.jpg" alt="Team Member">
+                        <h3>A;d madnpf</h3>
+                        <p>Lead dfd</p>
+                        <p>Some random texts</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="mailto:yahya@bnwp.org"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Elliot_John_Gleave_during_radio_interview.jpg/320px-Elliot_John_Gleave_during_radio_interview.jpg" alt="Team Member">
+                        <h3>A;d madnpf</h3>
+                        <p>Lead dfd</p>
+                        <p>Some random texts</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="mailto:yahya@bnwp.org"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Elliot_John_Gleave_during_radio_interview.jpg/320px-Elliot_John_Gleave_during_radio_interview.jpg" alt="Team Member">
+                        <h3>A;d madnpf</h3>
+                        <p>Lead dfd</p>
+                        <p>Some random texts</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="mailto:yahya@bnwp.org"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Elliot_John_Gleave_during_radio_interview.jpg/320px-Elliot_John_Gleave_during_radio_interview.jpg" alt="Team Member">
+                        <h3>A;d madnpf</h3>
+                        <p>Lead dfd</p>
+                        <p>Some random texts</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="mailto:yahya@bnwp.org"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Elliot_John_Gleave_during_radio_interview.jpg/320px-Elliot_John_Gleave_during_radio_interview.jpg" alt="Team Member">
+                        <h3>A;d madnpf</h3>
+                        <p>Lead dfd</p>
+                        <p>Some random texts</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="mailto:yahya@bnwp.org"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- Partners Section -->
+        <div class="section" id="partners">
+            <div class="container">
+                <h2>Our Partners</h2>
+                <div class="partners-grid">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wikimedia_Foundation_logo_-_vertical.svg/512px-Wikimedia_Foundation_logo_-_vertical.svg.png"
+                        alt="Wikimedia Foundation">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Wikimedia_Bangladesh_logo.svg/460px-Wikimedia_Bangladesh_logo.svg.png"
+                        alt="Wikimedia Bangladesh">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/WikiNandini_text_logo_2024.svg/320px-WikiNandini_text_logo_2024.svg.png"
+                        alt="WikiNandini">
+                    <!-- Add more partner logos -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Rest of the content -->
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2025 Bangla WikiConnect | CC BY-SA 4.0</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalContent"></p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        // Modal functionality
+        const modal = document.getElementById('projectModal');
+        const closeModal = document.querySelector('.close-modal');
+
+        document.querySelectorAll('.learn-more').forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.project-card');
+                document.getElementById('modalTitle').textContent = card.querySelector('h3').textContent;
+                document.getElementById('modalContent').textContent = card.querySelector('p').textContent;
+                modal.style.display = 'flex';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
